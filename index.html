@@ -1,11 +1,323 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World! Site Title</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Starabroad · Coming soon</title>
+  <meta name="description" content="Starabroad helps students from Azerbaijan and the CIS get into universities in Europe. Our new website is coming soon.">
+  <meta name="theme-color" content="#1F4BFF">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Starabroad · Coming soon">
+  <meta property="og:description" content="Starabroad helps students from Azerbaijan and the CIS get into universities in Europe. Our new website is coming soon.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' rx='64' fill='%231F4BFF'/%3E%3Ccircle cx='220' cy='80.5' r='22.7' fill='%23fff'/%3E%3Cpath d='M134.4 13.8c.4-1.4 2.4-1.1 2.4.3l2.2 75.2c1.3 44.6 28.9 84.2 70.2 100.8l34.2 13.8c1.2.5 1 2.2-.3 2.4l-47.3 7c-38.7 5.7-71.7 31.2-87 67.2l-9.1 21.6c-.5 1.2-2.2.9-2.4-.3l-3.4-23.2C88.3 239.9 62.9 206.9 26.9 191.6l-44-18.7c-1.2-.5-.9-2.2.3-2.4l36.6-4.7c44.2-5.6 80.9-36.9 93.4-79.7z' fill='%23FFC72C'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1F4BFF;
+      --yellow: #FFC72C;
+      --navy: #0B1B4D;
+      --deep: #13309E;
+      --white: #FFFFFF;
+      --text-soft: rgba(255, 255, 255, 0.86);
+      --line: rgba(255, 255, 255, 0.28);
+      --gutter: clamp(16px, 5vw, 56px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body { margin: 0; }
+
+    body {
+      background: var(--blue);
+      color: var(--white);
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection { background: var(--yellow); color: var(--navy); }
+
+    a:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 3px;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      overflow: clip;
+    }
+
+    /* Big faint ring in the background, echoing the passport seal */
+    .page::before {
+      content: "";
+      position: absolute;
+      width: 78vmax;
+      aspect-ratio: 1;
+      right: -26vmax;
+      top: -30vmax;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* Header */
+    .site-header { padding: 28px 0; }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.35);
+      flex: none;
+    }
+
+    .brand-mark svg { display: block; width: 100%; height: 100%; }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Hero */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 24px 0 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: clamp(40px, 6vw, 96px);
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.25rem, 9vw, 7rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+    }
+
+    .nowrap { white-space: nowrap; }
+
+    .h1-star {
+      display: inline-block;
+      width: 0.42em;
+      height: 0.42em;
+      margin-left: 0.08em;
+      vertical-align: 0.42em;
+      color: var(--yellow);
+      animation: twinkle 3.6s ease-in-out infinite;
+    }
+
+    .h1-star svg { display: block; width: 100%; height: 100%; }
+
+    .lead {
+      max-width: 46ch;
+      margin: 28px 0 0;
+      font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
+      line-height: 1.6;
+      color: var(--text-soft);
+    }
+
+    .cta {
+      justify-self: end;
+      width: 100%;
+      max-width: 440px;
+      padding: clamp(24px, 3vw, 40px);
+      border: 1.5px solid var(--white);
+      border-radius: 28px;
+      background: var(--blue); /* hides the background ring behind the card */
+    }
+
+    .cta-eyebrow {
+      margin: 0 0 12px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+
+    .cta-title {
+      margin: 0;
+      font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-text {
+      margin: 12px 0 28px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-soft);
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+    }
+
+    .btn svg { width: 20px; height: 20px; flex: none; }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover { background: #FFD45A; }
+
+    .btn-ghost {
+      color: var(--white);
+      box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: var(--white);
+      color: var(--blue);
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 24px 0 32px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .site-footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 24px;
+    }
+
+    .site-footer p { margin: 0; }
+
+    @keyframes twinkle {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(45deg) scale(0.82); }
+    }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: minmax(0, 1fr); }
+      .cta { justify-self: start; max-width: 520px; }
+    }
+
+    @media (max-width: 480px) {
+      .site-header { padding: 20px 0; }
+      main { padding: 16px 0 40px; }
+      .cta { border-radius: 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/" aria-label="Starabroad home">
+          <span class="brand-mark">
+            <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <mask id="logo-mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="300" height="300">
+                <rect width="299.887" height="299.887" fill="#1F4BFF"/>
+              </mask>
+              <g mask="url(#logo-mask)">
+                <rect width="299.887" height="299.887" fill="#1F4BFF"/>
+                <path d="M219.985 103.206C232.501 103.206 242.647 93.0595 242.647 80.5435C242.647 68.0274 232.501 57.8811 219.985 57.8811C207.469 57.8811 197.322 68.0274 197.322 80.5435C197.322 93.0595 207.469 103.206 219.985 103.206Z" fill="white"/>
+                <path d="M134.369 13.8236C134.769 12.4611 136.771 12.7189 136.812 14.1381L139.001 89.3431C140.299 133.916 167.863 173.491 209.221 190.161L243.414 203.943C244.593 204.419 244.388 206.148 243.13 206.333L195.794 213.315C157.069 219.026 124.118 244.504 108.844 280.546L99.6986 302.126C99.2065 303.287 97.4986 303.068 97.3167 301.819L93.9366 278.627C88.2913 239.891 62.8694 206.897 26.8537 191.561L-17.1687 172.816C-18.3388 172.318 -18.0997 170.593 -16.8382 170.432L19.7304 165.762C63.9625 160.112 100.653 128.811 113.2 86.0209L134.369 13.8236Z" fill="#FFC72C"/>
+              </g>
+            </svg>
+          </span>
+          <span class="brand-name">starabroad</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap hero">
+        <section>
+          <h1>Coming <span class="nowrap">soon<span class="h1-star" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M50 0Q57 43 100 50Q57 57 50 100Q43 57 0 50Q43 43 50 0Z" fill="currentColor"/></svg></span></span></h1>
+
+          <p class="lead">We're building the new home of Starabroad. We help students from Azerbaijan and the CIS get into universities in Europe, from choosing a programme all the way to the visa.</p>
+
+        </section>
+
+        <aside class="cta" aria-labelledby="cta-title">
+          <p class="cta-eyebrow">Your first step is free</p>
+          <h2 class="cta-title" id="cta-title">Book a 25-minute roadmap call</h2>
+          <p class="cta-text">Tell us your country, study level and goals. You leave the call with a clear plan.</p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="https://t.me/starabroad" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 3.5 2.5 11l6.5 2.5m12.5-10L18 20.5l-9-7m12.5-10L9 13.5m0 0V19l3.2-3.1"/></svg>
+              Message us on Telegram
+            </a>
+            <a class="btn btn-ghost" href="https://www.instagram.com/starabroad/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+              Follow on Instagram
+            </a>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>© 2026 Starabroad</p>
+        <p>Your offer letter starts here.</p>
+      </div>
+    </footer>
+  </div>
+</body>
 </html>
